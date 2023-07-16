@@ -1,14 +1,14 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Button } from "@/components/ui/button";
-import { useContext } from "react";
 import { DarkModeContext } from "@/providers/ThemeProvider";
 import { MoonStar, Sun } from "lucide-react";
+import { useContext } from "react";
 const SwitchThemeButton = () => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
   return (
