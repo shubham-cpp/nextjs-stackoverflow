@@ -35,7 +35,7 @@ const GoogleIcon = () => {
 
 const GoogleGithubButtons = () => {
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col space-y-4 w-[90vw] sm:w-fit">
       <Button variant="outline" className="flex items-center space-x-2">
         <GoogleIcon />
         <span>Continue with Google</span>

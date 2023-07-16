@@ -2,13 +2,14 @@ import Link from "next/link";
 import { FunctionComponent } from "react";
 import SwitchThemeButton from "./buttons/SwitchTheme";
 import { Button } from "./ui/button";
+import DropdownNavMenu from "./DropdownNavMenu";
 const Navbar: FunctionComponent = () => {
   return (
-    <nav className="dark:bg-zinc-900 dark:text-gray-100 bg-zinc-100 flex justify-between items-center py-4 px-8">
+    <nav className="dark:bg-zinc-900 dark:text-gray-100 bg-zinc-100 flex justify-between items-center py-4 px-4 sm:px-8">
       <h1 className="text-2xl font-bold">
         <Link href="/">StackOverflow</Link>
       </h1>
-      <ul className="flex items-center space-x-4 ">
+      <ul className="hidden sm:flex sm:items-center sm:space-x-4">
         <li>
           <Button variant="outline">
             <Link href="/login">Login</Link>
@@ -21,6 +22,14 @@ const Navbar: FunctionComponent = () => {
         </li>
         <li>
           <SwitchThemeButton />
+        </li>
+      </ul>
+      <ul className="flex space-x-4 sm:hidden">
+        <li>
+          <SwitchThemeButton />
+        </li>
+        <li>
+          <DropdownNavMenu />
         </li>
       </ul>
     </nav>
