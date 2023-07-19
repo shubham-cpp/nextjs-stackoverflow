@@ -13,7 +13,7 @@ interface Props {
   className?: string;
   size?: "default" | "sm" | "lg" | "icon" | null;
 }
-const SwitchThemeButton: FunctionComponent<Props> = ({ size }) => {
+const SwitchThemeButton: FunctionComponent<Props> = ({ size = "default" }) => {
   const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
   return (
     <TooltipProvider>
@@ -29,10 +29,6 @@ const SwitchThemeButton: FunctionComponent<Props> = ({ size }) => {
       </Tooltip>
     </TooltipProvider>
   );
-};
-
-SwitchThemeButton.defaultProps = {
-  size: "icon",
 };
 
 export default SwitchThemeButton;

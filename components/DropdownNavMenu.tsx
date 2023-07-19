@@ -23,6 +23,9 @@ const DropdownNavMenu: FunctionComponent<{ className?: string }> = ({
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuGroup>
+          <Link href="/">
+            <DropdownMenuItem>Home</DropdownMenuItem>
+          </Link>
           <Link href="/login">
             <DropdownMenuItem>Login</DropdownMenuItem>
           </Link>

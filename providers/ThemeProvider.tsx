@@ -22,12 +22,7 @@ const toggleDarkModeClass = (mode = true) => {
 };
 
 const DarkModeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    return (
-      localStorage.getItem("darkMode") === "true" ||
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    );
-  });
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
