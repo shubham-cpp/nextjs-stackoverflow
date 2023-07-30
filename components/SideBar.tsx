@@ -92,7 +92,7 @@ const SideBar = () => {
                 )}
                 <ul>
                   {items.map((item, idx) => {
-                    const isActive = pathname.startsWith(item.to);
+                    const isActive = pathname === item.to;
                     return (
                       <li
                         key={idx}
