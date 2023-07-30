@@ -1,5 +1,7 @@
 import SideBar from "@/components/SideBar";
 
-export default function Home() {
+const Users = () => {
   return <></>;
-}
+};
+
+export default Users;

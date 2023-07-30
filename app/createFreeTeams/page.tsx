@@ -1,5 +1,7 @@
 import SideBar from "@/components/SideBar";
 
-export default function Home() {
+const CreateTeams = () => {
   return <></>;
-}
+};
+
+export default CreateTeams;

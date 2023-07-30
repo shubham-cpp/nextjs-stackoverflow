@@ -4,10 +4,11 @@ import SwitchThemeButton from "./buttons/SwitchTheme";
 import { Button } from "./ui/button";
 import DropdownNavMenu from "./DropdownNavMenu";
 import SearchBar from "./SearchBar";
+import SideBar from "./SideBar";
 const Navbar: FunctionComponent = () => {
   return (
-    <nav className="dark:bg-zinc-900 dark:text-gray-100 bg-zinc-100 flex justify-between items-center py-4 px-4 sm:px-8">
-      <h1 className="text-2xl font-bold hidden sm:block">
+    <nav className="dark:bg-zinc-900 dark:text-gray-100 bg-zinc-100 flex justify-between items-center py-4 px-4 sm:px-8 sticky top-0">
+      <h1 className="text-2xl font-bold hidden sm:block pl-10">
         <Link href="/">StackOverflow</Link>
       </h1>
       <SearchBar />
