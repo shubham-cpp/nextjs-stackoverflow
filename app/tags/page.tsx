@@ -3,18 +3,17 @@ import TagsCard from "@/components/TagsCard";
 
 const Tags = () => {
   return (
-    <section className="ml-[20rem] pt-[2rem]">
-      <h1 className="text-3xl pb-2">Tags</h1>
-      <p className="max-w-[50%] py-4">
+    <section className="max-w-[100svw] ml-6 md:max-w-[80svw]">
+      <h1 className="text-3xl pb-2 pt-8">Tags</h1>
+      <div className="max-w-[30rem]">
         A tag is a keyword or label that categorizes your question with other,
         similar questions. Using the right tags makes it easier for others to
         find and answer your question.
-      </p>
-      <div className="pt-4 ml-[-.5rem] w-[30rem]">
+      </div>
+      <div className="py-4 ml-[-.5rem] sm:max-w-[30rem] w-[80%]">
         <SearchBar />
       </div>
-      <div className="pt-10"></div>
-      <div className="flex flex-wrap gap-5">
+      <div className="flex flex-wrap items-center gap-4 md:w-[100%]">
         <TagsCard />
         <TagsCard />
         <TagsCard />

@@ -78,7 +78,7 @@ const SideBar = () => {
   return (
     <aside
       className={`${hideSidebar ? "hidden" : ""}
-        dark:bg-zinc-900 pl-10 w-[18rem] border-r-2 border-r-zinc-100 dark:border-none h-[90svh] sticky top-[4.5rem]`}
+        dark:bg-zinc-900 pl-10 min-w-[18rem] border-r-2 border-r-zinc-100 dark:border-none h-[90svh] sticky top-[4.5rem] hidden md:block`}
     >
       <ul className="pt-6">
         {sideBarList.map((section, index) => (
