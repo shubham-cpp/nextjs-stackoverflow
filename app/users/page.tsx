@@ -1,7 +1,5 @@
-import SideBar from "@/components/SideBar";
-
 const Users = () => {
-  return <></>;
+  return <>Users page</>;
 };
 
 export default Users;

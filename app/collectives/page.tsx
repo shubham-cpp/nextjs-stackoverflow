@@ -1,7 +1,5 @@
-import SideBar from "@/components/SideBar";
-
 const Collectives = () => {
-  return <></>;
+  return <>Collectives</>;
 };
 
 export default Collectives;

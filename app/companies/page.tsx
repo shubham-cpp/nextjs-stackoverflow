@@ -1,7 +1,5 @@
-import SideBar from "@/components/SideBar";
-
 const Companies = () => {
-  return <></>;
+  return <>Companies</>;
 };
 
 export default Companies;

@@ -1,7 +1,7 @@
-import SideBar from "@/components/SideBar";
-
 const Questions = () => {
-  return <></>;
+  return <>
+    Question
+    </>;
 };
 
 export default Questions;
