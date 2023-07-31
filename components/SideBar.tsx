@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment } from "react";
+import React, { Fragment, FunctionComponent } from "react";
 import { Globe2, Sparkles, Briefcase } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -64,7 +64,9 @@ interface IconComponents {
   [key: string]: React.ElementType;
 }
 
-const SideBar = () => {
+const SideBar: FunctionComponent<{ mobile?: boolean }> = ({
+  mobile = false,
+}) => {
   const iconComponents: IconComponents = {
     Globe2,
     Sparkles,
@@ -77,8 +79,8 @@ const SideBar = () => {
 
   return (
     <aside
-      className={`${hideSidebar ? "hidden" : ""}
-        dark:bg-zinc-900 pl-10 min-w-[18rem] border-r-2 border-r-zinc-100 dark:border-none h-[90svh] sticky top-[4.5rem] hidden md:block`}
+      className={`${hideSidebar ? "hidden" : ""} ${mobile ? "block" : "hidden"}
+        dark:bg-zinc-900 pl-10 min-w-[18rem] border-r-2 border-r-zinc-100 dark:border-none h-[90svh] sticky top-[4.5rem] md:block`}
     >
       <ul className="pt-6">
         {sideBarList.map((section, index) => (
