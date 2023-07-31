@@ -42,8 +42,10 @@ export default function RootLayout({
       <body className={inter.className + " flex flex-col min-h-screen"}>
         <DarkModeProvider>
           <Navbar />
-          <SideBar />
-          {children}
+          <div className="flex gap-5">
+            <SideBar />
+            {children}
+          </div>
         </DarkModeProvider>
       </body>
     </html>
