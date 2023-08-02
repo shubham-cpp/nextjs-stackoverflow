@@ -13,7 +13,7 @@ const Tags = () => {
       <div className="py-4 ml-[-.5rem] sm:max-w-[30rem] w-[80%]">
         <SearchBar />
       </div>
-      <div className="flex flex-wrap items-center gap-4 md:w-[100%]">
+      <div className="flex flex-wrap items-center gap-4 md:w-full">
         <TagsCard />
         <TagsCard />
         <TagsCard />
