@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import SideBar from "@/components/SideBar";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -41,8 +42,10 @@ export default function RootLayout({
       <body className={inter.className + " flex flex-col min-h-screen"}>
         <DarkModeProvider>
           <Navbar />
-
-          {children}
+          <div className="flex gap-5">
+            <SideBar />
+            {children}
+          </div>
         </DarkModeProvider>
       </body>
     </html>
