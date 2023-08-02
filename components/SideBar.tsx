@@ -71,15 +71,13 @@ export const iconComponents: IconComponents = {
 };
 
 const SideBar: FunctionComponent = () => {
-  
-
   const pathname = usePathname();
   const hideSidebar =
     pathname.includes("/login") || pathname.includes("/register");
 
   return (
     <aside
-      className={`${hideSidebar ? "hidden" : ""} 
+      className={`${hideSidebar ? "hidden md:hidden" : ""} 
         dark:bg-zinc-900 pl-10 min-w-[18rem] border-r-2 border-r-zinc-100 dark:border-none h-[90svh] sticky top-[4.5rem] hidden md:block`}
     >
       <ul className="pt-6">
