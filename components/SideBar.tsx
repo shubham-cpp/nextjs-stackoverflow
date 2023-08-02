@@ -5,7 +5,7 @@ import { Globe2, Sparkles, Briefcase } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const sideBarList = [
+export const sideBarList = [
   {
     home: [
       {
@@ -60,18 +60,18 @@ const sideBarList = [
   },
 ];
 
-interface IconComponents {
+export interface IconComponents {
   [key: string]: React.ElementType;
 }
 
-const SideBar: FunctionComponent<{ mobile?: boolean }> = ({
-  mobile = false,
-}) => {
-  const iconComponents: IconComponents = {
-    Globe2,
-    Sparkles,
-    Briefcase,
-  };
+export const iconComponents: IconComponents = {
+  Globe2,
+  Sparkles,
+  Briefcase,
+};
+
+const SideBar: FunctionComponent = () => {
+  
 
   const pathname = usePathname();
   const hideSidebar =
@@ -79,8 +79,8 @@ const SideBar: FunctionComponent<{ mobile?: boolean }> = ({
 
   return (
     <aside
-      className={`${hideSidebar ? "hidden" : ""} ${mobile ? "block" : "hidden"}
-        dark:bg-zinc-900 pl-10 min-w-[18rem] border-r-2 border-r-zinc-100 dark:border-none h-[90svh] sticky top-[4.5rem] md:block`}
+      className={`${hideSidebar ? "hidden" : ""} 
+        dark:bg-zinc-900 pl-10 min-w-[18rem] border-r-2 border-r-zinc-100 dark:border-none h-[90svh] sticky top-[4.5rem] hidden md:block`}
     >
       <ul className="pt-6">
         {sideBarList.map((section, index) => (
