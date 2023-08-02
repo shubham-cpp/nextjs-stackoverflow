@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useEffect, useLayoutEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 interface DarkModeContext {
   isDarkMode: boolean;
@@ -26,9 +26,11 @@ const DarkModeProvider = ({ children }: { children: React.ReactNode }) => {
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
+    localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
+    toggleDarkModeClass(isDarkMode);
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     // FIXME: Issue darkMode is applied after navbar loads, so this defaults to light theme regardless
     if (
       localStorage.getItem("darkMode") === "true" ||
@@ -37,11 +39,6 @@ const DarkModeProvider = ({ children }: { children: React.ReactNode }) => {
       toggleDarkModeClass();
     }
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
-    toggleDarkModeClass(isDarkMode);
-  }, [isDarkMode]);
 
   return (
     <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
