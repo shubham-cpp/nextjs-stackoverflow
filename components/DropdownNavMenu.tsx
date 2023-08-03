@@ -7,6 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useMediaQuery } from "@/lib/hooks/useMediaQuery";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { FunctionComponent } from "react";
@@ -14,11 +15,12 @@ import { FunctionComponent } from "react";
 const DropdownNavMenu: FunctionComponent<{ className?: string }> = ({
   className,
 }) => {
+  const isSmall = useMediaQuery("(max-width: 560px)");
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className={className}>
-        <Button variant="outline" size="icon">
-          <Menu />
+        <Button variant="outline" size={isSmall ? "sm" : "icon"}>
+          <Menu size={18} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">

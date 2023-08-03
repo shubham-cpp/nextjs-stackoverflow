@@ -21,14 +21,6 @@ const SearchBar: FunctionComponent = () => {
   }, [smaller]);
   return (
     <div className="flex items-center space-x-2">
-      <button
-        className="sm:hidden"
-        type="button"
-        onClick={toggleHidden}
-        hidden={page === "/login" || page === "/register"}
-      >
-        <Search />
-      </button>
       <Input
         type="search"
         name="searchQuery"
@@ -38,6 +30,14 @@ const SearchBar: FunctionComponent = () => {
         className={hidden ? "hidden" : ""}
         hidden={hidden}
       />
+      <button
+        className="sm:hidden"
+        type="button"
+        onClick={toggleHidden}
+        hidden={page === "/login" || page === "/register"}
+      >
+        <Search />
+      </button>
     </div>
   );
 };

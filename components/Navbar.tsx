@@ -9,12 +9,14 @@ import SheetSideBar from "./SheetSideBar";
 
 const Navbar: FunctionComponent = () => {
   return (
-    <nav className="dark:bg-zinc-900 dark:text-gray-100 bg-zinc-100 flex justify-between items-center py-4 px-4 sm:px-8 sticky top-0">
+    <nav className="sticky top-0 flex items-center justify-between bg-zinc-100 px-3 py-4 dark:bg-zinc-900 dark:text-gray-100 sm:px-8">
       <SheetSideBar />
-      <h1 className="text-2xl font-bold hidden sm:block pl-10">
+      <h1 className="hidden pl-10 text-2xl font-bold sm:block">
         <Link href="/">StackOverflow</Link>
       </h1>
-      <SearchBar />
+      <div className="hidden sm:block">
+        <SearchBar />
+      </div>
       <ul className="hidden sm:flex sm:items-center sm:space-x-4">
         <li>
           <Button variant="outline">
@@ -30,7 +32,10 @@ const Navbar: FunctionComponent = () => {
           <SwitchThemeButton />
         </li>
       </ul>
-      <ul className="flex space-x-4 sm:hidden">
+      <ul className="flex items-center space-x-2 sm:hidden">
+        <li>
+          <SearchBar />
+        </li>
         <li>
           <SwitchThemeButton />
         </li>
