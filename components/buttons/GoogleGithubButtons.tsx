@@ -1,4 +1,6 @@
+"use client";
 import { Github } from "lucide-react";
+import { signIn } from "next-auth/react";
 import { Button } from "../ui/button";
 
 const GoogleIcon = () => {
@@ -11,7 +13,7 @@ const GoogleIcon = () => {
       imageRendering="optimizeQuality"
       fillRule="evenodd"
       clipRule="evenodd"
-      className="w-6 h-6"
+      className="h-6 w-6"
     >
       <path
         d="M326667 170370c0-13704-1112-23704-3518-34074H166667v61851h91851c-1851 15371-11851 38519-34074 54074l-311 2071 49476 38329 3428 342c31481-29074 49630-71852 49630-122593m0 0z"
@@ -33,15 +35,33 @@ const GoogleIcon = () => {
   );
 };
 
+const handleClickGoogle = () => {
+  signIn("google", {
+    callbackUrl: "/",
+  });
+};
+const handleClickGithub = () => {
+  signIn("github", {
+    callbackUrl: "/",
+  });
+};
 const GoogleGithubButtons = () => {
   return (
-    <div className="flex flex-col space-y-4 w-[90vw] sm:w-fit">
-      <Button variant="outline" className="flex items-center space-x-2">
+    <div className="flex w-[90vw] flex-col space-y-4 sm:w-fit">
+      <Button
+        variant="outline"
+        className="flex items-center space-x-2"
+        onClick={handleClickGoogle}
+      >
         <GoogleIcon />
         <span>Continue with Google</span>
       </Button>
 
-      <Button variant="outline" className="flex items-center space-x-2">
+      <Button
+        variant="outline"
+        className="flex items-center space-x-2"
+        onClick={handleClickGithub}
+      >
         <Github />
         <span>Continue with Github</span>
       </Button>

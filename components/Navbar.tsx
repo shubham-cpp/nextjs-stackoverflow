@@ -6,6 +6,7 @@ import DropdownNavMenu from "./DropdownNavMenu";
 import SearchBar from "./SearchBar";
 import SideBar from "./SideBar";
 import SheetSideBar from "./SheetSideBar";
+import LoginSignup from "./LoginSignup";
 
 const Navbar: FunctionComponent = () => {
   return (
@@ -18,16 +19,17 @@ const Navbar: FunctionComponent = () => {
         <SearchBar />
       </div>
       <ul className="hidden sm:flex sm:items-center sm:space-x-4">
-        <li>
-          <Button variant="outline">
-            <Link href="/login">Login</Link>
-          </Button>
-        </li>
-        <li>
-          <Button size="sm">
-            <Link href="/register">Sign Up</Link>
-          </Button>
-        </li>
+        {/* <li> */}
+        {/*   <Button variant="outline"> */}
+        {/*     <Link href="/login">Login</Link> */}
+        {/*   </Button> */}
+        {/* </li> */}
+        {/* <li> */}
+        {/*   <Button size="sm"> */}
+        {/*     <Link href="/register">Sign Up</Link> */}
+        {/*   </Button> */}
+        {/* </li> */}
+        <LoginSignup />
         <li>
           <SwitchThemeButton />
         </li>
