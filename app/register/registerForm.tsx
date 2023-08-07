@@ -15,7 +15,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
+import { Loader2Icon } from "lucide-react";
+import { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
+import { useRouter} from "next/navigation";
 const FormSchema = z
   .object({
     fullName: z
@@ -44,17 +47,56 @@ const FormSchema = z
   });
 
 const RegisterForm = () => {
+  const [loading, setLoading] = useState(false);
+
+  const { toast } = useToast();
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    setLoading(true);
     // TODO: Make api request
-    console.log("done\n", data);
+    fetch("/api/register", {
+      method: "POST",
+      body: JSON.stringify({
+        name: data.fullName,
+        email: data.email,
+        password: data.password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((resData) => {
+        if (resData?.success === false) {
+          console.log("resData", resData);
+          return Promise.reject(resData);
+        }
+        toast({
+          // variant: "destructive",
+          title: "User Created successfully.",
+          description: "Now you can login.",
+          duration: 1500,
+        });
+        router.push("/login");
+      })
+      .catch((err) => {
+        toast({
+          variant: "destructive",
+          title: "Failed to register.",
+          description: err.message,
+          duration: 1500,
+        });
+        console.error("ERROR: while POST /api/register", err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }
   return (
     <Form {...form}>
       <form
-        className="flex flex-col items-center space-y-4 w-[90svw] sm:w-[40ch]"
+        className="flex w-[90svw] flex-col items-center space-y-4 sm:w-[40ch]"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <FormField
@@ -80,6 +122,8 @@ const RegisterForm = () => {
                 <Input
                   type="email"
                   placeholder="Eg: bill@hotmail.com"
+                  autoCorrect="false"
+                  autoCapitalize="false"
                   {...field}
                 />
               </FormControl>
@@ -125,8 +169,19 @@ const RegisterForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full sm:w-[90%] my-4">
-          Login
+        <Button
+          type="submit"
+          className="my-4 w-full sm:w-[90%]"
+          disabled={loading}
+        >
+          {loading ? (
+            <>
+              <Loader2Icon size={24} className="mx-2 animate-spin" />
+              <p>Creating...</p>
+            </>
+          ) : (
+            "Register"
+          )}
         </Button>
       </form>
     </Form>

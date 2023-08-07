@@ -4,8 +4,8 @@ import RegisterForm from "./registerForm";
 
 const Register = () => {
   return (
-    <div className="flex flex-col space-y-4 justify-center items-center py-24 w-full">
-      <h2 className="text-4xl font-bold font-serif">Register page</h2>
+    <div className="flex w-full flex-col items-center justify-center space-y-4 py-24">
+      <h2 className="font-serif text-4xl font-bold">Register page</h2>
 
       <RegisterForm />
       <p>OR</p>

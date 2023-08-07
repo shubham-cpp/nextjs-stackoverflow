@@ -9,7 +9,7 @@ import { compare } from "bcrypt";
 const handler = NextAuth({
   providers: [
     Credential({
-      name: "Credentials",
+      name: "credentials",
       credentials: {
         email: { label: "Email", type: "email", placeholder: "bill@gates.com" },
         password: { label: "Password", type: "password" },
@@ -22,7 +22,7 @@ const handler = NextAuth({
           return null;
         }
         try {
-          const user = db
+          const users = await db
             .select({
               id: usersTable.id,
               name: usersTable.name,
@@ -33,17 +33,19 @@ const handler = NextAuth({
             .from(usersTable)
             .where(eq(usersTable.email, credentials.email))
             .all();
-          if (user.length === 0) return null;
+          if (users.length === 0) return null;
+          const user = users[0]!;
+
           const passwordMatch = await compare(
             credentials.password,
-            user[0].password,
+            user.password,
           );
           if (!passwordMatch) return null;
           return {
-            id: user[0].id.toString(),
-            name: user[0].name,
-            email: user[0].email,
-            image: user[0].image,
+            id: user.id.toString(),
+            name: user.name,
+            email: user.email,
+            image: user.image,
           };
         } catch (error) {
           console.error("ERROR: while credentials\n", error);

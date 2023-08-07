@@ -1,12 +1,10 @@
 import Link from "next/link";
-import { FunctionComponent } from "react";
-import SwitchThemeButton from "./buttons/SwitchTheme";
-import { Button } from "./ui/button";
+import type { FunctionComponent } from "react";
 import DropdownNavMenu from "./DropdownNavMenu";
-import SearchBar from "./SearchBar";
-import SideBar from "./SideBar";
-import SheetSideBar from "./SheetSideBar";
 import LoginSignup from "./LoginSignup";
+import SearchBar from "./SearchBar";
+import SheetSideBar from "./SheetSideBar";
+import SwitchThemeButton from "./buttons/SwitchTheme";
 
 const Navbar: FunctionComponent = () => {
   return (
@@ -19,16 +17,6 @@ const Navbar: FunctionComponent = () => {
         <SearchBar />
       </div>
       <ul className="hidden sm:flex sm:items-center sm:space-x-4">
-        {/* <li> */}
-        {/*   <Button variant="outline"> */}
-        {/*     <Link href="/login">Login</Link> */}
-        {/*   </Button> */}
-        {/* </li> */}
-        {/* <li> */}
-        {/*   <Button size="sm"> */}
-        {/*     <Link href="/register">Sign Up</Link> */}
-        {/*   </Button> */}
-        {/* </li> */}
         <LoginSignup />
         <li>
           <SwitchThemeButton />

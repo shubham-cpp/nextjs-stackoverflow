@@ -3,9 +3,8 @@ import SideBar from "@/components/SideBar";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { SessionProvider } from "next-auth/react";
 import Providers from "@/lib/Providers";
-
+import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -48,6 +47,7 @@ export default function RootLayout({
             {children}
           </div>
         </Providers>
+        <Toaster />
       </body>
     </html>
   );
