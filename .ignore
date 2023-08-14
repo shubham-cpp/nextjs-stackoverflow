@@ -34,5 +34,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+pnpm-lock.yaml
+pnpm-lock.yml
+package-lock.json
+yarn.lock
+
 Notes.md
-.env

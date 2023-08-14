@@ -23,7 +23,7 @@ const SheetSideBar = () => {
         <div
           className={`${
             hideSidebar ? "hidden" : ""
-          } absolute top-6 left-6 md:hidden`}
+          } md:hidden`}
         >
           <Menu />
         </div>

@@ -3,8 +3,8 @@ import SideBar from "@/components/SideBar";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import DarkModeProvider from "@/providers/ThemeProvider";
-
+import Providers from "@/lib/Providers";
+import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -39,14 +39,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className + " flex flex-col min-h-screen"}>
-        <DarkModeProvider>
+      <body className={inter.className + " flex min-h-screen flex-col"}>
+        <Providers>
           <Navbar />
           <div className="flex gap-5">
             <SideBar />
             {children}
           </div>
-        </DarkModeProvider>
+        </Providers>
+        <Toaster />
       </body>
     </html>
   );

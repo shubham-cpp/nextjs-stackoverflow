@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1691374966605,
+      "tag": "0000_nostalgic_shaman",
+      "breakpoints": true
+    }
+  ]
+}

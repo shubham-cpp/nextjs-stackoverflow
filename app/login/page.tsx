@@ -4,18 +4,20 @@ import LoginForm from "./loginForm";
 
 const Login = () => {
   return (
-    <div className="flex flex-col space-y-4 justify-center items-center py-24 ">
-      <h2 className="text-4xl font-bold font-serif">Login page</h2>
-      <LoginForm />
-      <p>OR</p>
+    <div className="w-full">
+      <div className="flex flex-col items-center justify-center space-y-4 py-24">
+        <h2 className="font-serif text-4xl font-bold">Login page</h2>
+        <LoginForm />
+        <p>OR</p>
 
-      <GoogleGithubButtons />
-      <p>
-        Do not have an account?{" "}
-        <Link href="/register" className="text-blue-500 ">
-          Create New
-        </Link>
-      </p>
+        <GoogleGithubButtons />
+        <p>
+          Do not have an account?{" "}
+          <Link href="/register" className="text-blue-500 ">
+            Create New
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };
