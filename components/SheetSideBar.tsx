@@ -11,6 +11,7 @@ import { iconComponents, sideBarList } from "./SideBar";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import React, { Fragment } from "react";
+import { cn } from "@/lib/utils";
 
 const SheetSideBar = () => {
   const pathname = usePathname();
@@ -19,22 +20,17 @@ const SheetSideBar = () => {
 
   return (
     <Sheet>
-      <SheetTrigger>
-        <div
-          className={`${
-            hideSidebar ? "hidden" : ""
-          } md:hidden`}
-        >
+      {/* <SheetTrigger className={`${hideSidebar ? "hidden" : ""} md:hidden`}> */}
+      <SheetTrigger className={cn(["md:hidden", { hidden: hideSidebar }])}>
+        {/* <div className={`${hideSidebar ? "hidden" : ""} md:hidden`}> */}
+        <div>
           <Menu />
         </div>
       </SheetTrigger>
       <SheetContent side={"left"} className={`w-[18rem] p-0 dark:bg-zinc-900 `}>
         <>
           <aside
-            className={` 
-              "block" 
-            }
-        dark:bg-zinc-900 pl-10 min-w-[18rem] border-r-2 border-r-zinc-100 dark:border-none h-[90svh] sticky top-[4.5rem] md:block`}
+            className={`sticky top-[4.5rem] min-w-[18rem] border-r-2 border-r-zinc-100 pl-10 dark:border-none dark:bg-zinc-900 md:block`}
           >
             <ul className="pt-6">
               {sideBarList.map((section, index) => (
@@ -42,7 +38,7 @@ const SheetSideBar = () => {
                   {Object.entries(section).map(([sectionName, items]) => (
                     <Fragment key={sectionName}>
                       {sectionName !== "home" && (
-                        <li className="pl-8 rounded-sm flex gap-2 text-gray-400">
+                        <li className="flex gap-2 rounded-sm pl-8 text-gray-400">
                           <p>{sectionName.toLocaleUpperCase()}</p>
                         </li>
                       )}
@@ -54,9 +50,9 @@ const SheetSideBar = () => {
                               key={idx}
                               className={`${
                                 isActive
-                                  ? "border-r-4 dark:border-red-800 border-red-600 dark:bg-zinc-700 bg-zinc-100 font-semibold"
+                                  ? "border-r-4 border-red-600 bg-zinc-100 font-semibold dark:border-red-800 dark:bg-zinc-700"
                                   : ""
-                              } dark:hover:bg-zinc-700 hover:bg-zinc-100 py-3 pl-8`}
+                              } py-3 pl-8 hover:bg-zinc-100 dark:hover:bg-zinc-700`}
                             >
                               <Link href={item.to}>
                                 <SheetClose>
@@ -64,10 +60,10 @@ const SheetSideBar = () => {
                                     {item.icon
                                       ? iconComponents[item.icon] &&
                                         React.createElement(
-                                          iconComponents[item.icon]
+                                          iconComponents[item.icon],
                                         )
                                       : item.indent && (
-                                          <div className="w-[1.5rem] h-[1.5rem]"></div>
+                                          <div className="h-[1.5rem] w-[1.5rem]"></div>
                                         )}
                                     {item.display}
                                   </div>

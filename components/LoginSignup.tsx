@@ -1,8 +1,10 @@
 "use client";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { Loader2 } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
-import { Button } from "./ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
-import { Loader2Icon } from "lucide-react";
 
 export const handleLogout = () => {
   signOut({
@@ -10,42 +12,68 @@ export const handleLogout = () => {
   });
 };
 export default function LoginSignup() {
-  const { status, data: session } = useSession();
+  const { data: session, status } = useSession();
 
   const loading = status === "loading";
-  if (session !== null) {
+
+  if (loading) {
     return (
       <>
-        <Button variant="outline" disabled={loading} onClick={handleLogout}>
-          {loading ? (
-            <Loader2Icon className="animate-spin" size={24} />
-          ) : (
-            "Logout"
-          )}
-        </Button>
+        <li>
+          <Button variant="outline" disabled>
+            <Loader2 size={24} className="animate-spin" />
+          </Button>
+        </li>
+        <li>
+          <Button variant="outline" disabled>
+            <Loader2 size={24} className="animate-spin" />
+          </Button>
+        </li>
+      </>
+    );
+  }
+  if (session) {
+    const avatarFallbackText = session.user?.name
+      ?.split(" ")
+      .map((s) => s[0])
+      .join("");
+    return (
+      <>
+        <li>
+          <Link href="/profile" title="Click here to view your profile">
+            <Avatar>
+              <AvatarImage src={session?.user?.image ?? "#"} />
+              <AvatarFallback>{avatarFallbackText}</AvatarFallback>
+            </Avatar>
+          </Link>
+        </li>
+        <li>
+          <Button variant="outline" onClick={handleLogout}>
+            Logout
+          </Button>
+        </li>
       </>
     );
   }
   return (
     <>
       <li>
-        <Button variant="outline" disabled={loading}>
-          {loading ? (
-            <Loader2Icon className="animate-spin" size={24} />
-          ) : (
-            <Link href="/login">Login</Link>
-          )}
-        </Button>
+        <Link
+          href="/login"
+          className={cn(buttonVariants({ variant: "outline" }))}
+        >
+          Login
+        </Link>
       </li>
       <li>
-        <Button size="sm">
-          {loading ? (
-            <Loader2Icon className="animate-spin" size={24} />
-          ) : (
-            <Link href="/register">Sign Up</Link>
-          )}
-        </Button>
+        <Link
+          href="/register"
+          className={cn(buttonVariants({ variant: "outline" }))}
+        >
+          Sign Up
+        </Link>
       </li>
     </>
   );
 }
+// export default LoginSignup;

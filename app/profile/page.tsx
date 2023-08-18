@@ -7,6 +7,10 @@ const ProfilePage = async () => {
   if (!session) {
     redirect("/login");
   }
-  return <div>This is a protected route</div>;
+  return (
+    <main className="flex w-full flex-col p-4 md:max-w-5xl">
+      This is a protected route
+    </main>
+  );
 };
 export default ProfilePage;

@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button";
 
 const Companies = () => {
   return (
-    <section className="flex flex-col md:w-[70%] w-full ml-6">
+    <section className="ml-6 flex w-full flex-col md:w-[70%]">
       <div className="max-w-[100svw] md:max-w-[80svw]">
-        <h1 className="text-3xl pb-2 pt-8">Companies</h1>
+        <h1 className="pb-2 pt-8 text-3xl">Companies</h1>
         <p className="text-gray-400">
-          {"Learn about what it's like to work at companies"}
+          Learn about what it&apos;s like to work at companies
         </p>
-        <div className="flex gap-2 py-4 ml-[-.5rem] sm:max-w-full w-full">
+        <div className="ml-[-.5rem] flex w-full gap-2 py-4 sm:max-w-full">
           <SearchBar />
           {/* <SearchBar /> */}
           <Button>Search</Button>

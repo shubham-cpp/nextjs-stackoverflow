@@ -1,7 +1,5 @@
 const CreateTeams = () => {
-  return <>
-    Create teams?
-    </>;
+  return <>Create teams?</>;
 };
 
 export default CreateTeams;
