@@ -13,7 +13,7 @@ export default async function ProfileRootLayout({ children }: Props) {
     redirect("/login");
   }
   return (
-    <main className="flex w-full flex-col p-4 md:max-w-5xl">
+    <main className="flex w-full flex-col p-4 md:max-w-6xl">
       <TabBar />
       <section className="flex-grow">{children}</section>
     </main>
