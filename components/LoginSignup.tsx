@@ -5,6 +5,7 @@ import { Loader2 } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
+import { useState } from "react";
 
 export const handleLogout = () => {
   signOut({
@@ -13,8 +14,14 @@ export const handleLogout = () => {
 };
 export default function LoginSignup() {
   const { data: session, status } = useSession();
+  const [isLoading, setIsLoading] = useState(false);
 
   const loading = status === "loading";
+  const handleLogout = () => {
+    signOut({
+      callbackUrl: "/login",
+    }).finally(() => setIsLoading(false));
+  };
 
   if (loading) {
     return (
@@ -48,7 +55,7 @@ export default function LoginSignup() {
           </Link>
         </li>
         <li>
-          <Button variant="outline" onClick={handleLogout}>
+          <Button variant="outline" onClick={handleLogout} loading={isLoading}>
             Logout
           </Button>
         </li>

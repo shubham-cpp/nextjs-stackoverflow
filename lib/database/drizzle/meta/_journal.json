@@ -8,6 +8,34 @@
       "when": 1691374966605,
       "tag": "0000_nostalgic_shaman",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1693071588079,
+      "tag": "0001_goofy_jack_power",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1693072401149,
+      "tag": "0002_wide_shadowcat",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1693072664541,
+      "tag": "0003_futuristic_chameleon",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1693111896557,
+      "tag": "0004_next_vengeance",
+      "breakpoints": true
     }
   ]
 }

@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { signIn } from "next-auth/react";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const FormSchema = z.object({
   email: z.string().email(),
@@ -32,6 +33,7 @@ const FormSchema = z.object({
 });
 
 const LoginForm = () => {
+  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
 
@@ -42,6 +44,7 @@ const LoginForm = () => {
   function onSubmit(data: z.infer<typeof FormSchema>) {
     // TODO: Make api request
     // console.log("done\n", data);
+    setLoading(true);
     signIn("credentials", {
       email: data.email,
       password: data.password,
@@ -51,7 +54,7 @@ const LoginForm = () => {
         if (res?.error || !res?.ok) {
           toast({
             title: "Error while logging",
-            description: JSON.stringify(res?.error ?? ""),
+            description: "Invalid email or password",
             variant: "destructive",
             duration: 2000,
           });
@@ -64,6 +67,9 @@ const LoginForm = () => {
           variant: "destructive",
           duration: 2000,
         });
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }
   return (
@@ -106,7 +112,11 @@ const LoginForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="my-4 w-full sm:w-[90%]">
+        <Button
+          type="submit"
+          className="my-4 w-full sm:w-[90%]"
+          loading={loading}
+        >
           Login
         </Button>
       </form>

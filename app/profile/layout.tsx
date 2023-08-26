@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
-import TabBar from "./TabBar";
-import { options } from "../api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
+import { options } from "../api/auth/[...nextauth]/options";
+import TabBar from "./TabBar";
 
 type Props = {
   children: React.ReactNode;
