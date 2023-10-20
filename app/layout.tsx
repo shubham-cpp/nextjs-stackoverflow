@@ -1,10 +1,10 @@
 import Navbar from "@/components/Navbar";
 import SideBar from "@/components/SideBar";
-import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
+import Providers from "@/lib/Providers";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Providers from "@/lib/Providers";
-import { Toaster } from "@/components/ui/toaster";
+import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -29,10 +29,11 @@ export const metadata: Metadata = {
     "stackoverflow",
     "server components",
     "sqlite",
+    "turso",
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -42,7 +43,7 @@ export default function RootLayout({
       <body className={inter.className + " flex min-h-screen flex-col"}>
         <Providers>
           <Navbar />
-          <div className="flex gap-5">
+          <div className="flex flex-grow gap-5">
             <SideBar />
             {children}
           </div>

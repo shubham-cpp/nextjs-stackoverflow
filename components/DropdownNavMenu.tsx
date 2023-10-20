@@ -1,5 +1,6 @@
 "use client";
-import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { buttonVariants } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,8 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useMediaQuery } from "@/lib/hooks/useMediaQuery";
-import { Menu } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { FunctionComponent } from "react";
@@ -17,37 +17,45 @@ import { handleLogout } from "./LoginSignup";
 const DropdownNavMenu: FunctionComponent<{ className?: string }> = ({
   className,
 }) => {
-  const isSmall = useMediaQuery("(max-width: 560px)");
   const { data: session } = useSession();
+  const avatarFallbackText = session?.user?.name
+    ?.split(" ")
+    .map((s) => s[0])
+    .join("");
+  if (!session) {
+    return (
+      <Link
+        href="/login"
+        className={cn(buttonVariants({ variant: "outline" }))}
+      >
+        Login
+      </Link>
+    );
+  }
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className={className}>
-        <Button variant="outline" size={isSmall ? "sm" : "icon"}>
-          <Menu size={18} />
-        </Button>
+        <Avatar>
+          <AvatarImage src={session?.user?.image ?? "#"} />
+          <AvatarFallback>{avatarFallbackText}</AvatarFallback>
+        </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuGroup>
-          {session ? (
-            <DropdownMenuItem>
-              <button
-                onClick={handleLogout}
-                title="Click here to logout, you will be redirected to Login page"
-                className="w-full text-start"
-              >
-                Logout
-              </button>
-            </DropdownMenuItem>
-          ) : (
-            <>
-              <Link href="/login">
-                <DropdownMenuItem>Login</DropdownMenuItem>
-              </Link>
-              <Link href="/register">
-                <DropdownMenuItem>Sign Up</DropdownMenuItem>
-              </Link>
-            </>
-          )}
+          <DropdownMenuItem asChild>
+            <Link href="/profile" className="w-full text-start">
+              Profile
+            </Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem asChild>
+            <button
+              onClick={handleLogout}
+              title="Click here to logout, you will be redirected to Login page"
+              className="w-full text-start"
+            >
+              Logout
+            </button>
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

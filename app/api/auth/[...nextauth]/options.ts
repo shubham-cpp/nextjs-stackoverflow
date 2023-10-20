@@ -1,13 +1,15 @@
 import db from "@/lib/database";
-import { usersTable } from "@/lib/database/schemas/users";
+import { regularUsersTable as usersTable } from "@/lib/database/schemas/users";
 import { compare } from "bcrypt";
 import { eq } from "drizzle-orm";
 import { NextAuthOptions } from "next-auth";
+import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import Credential from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 
 export const options: NextAuthOptions = {
+  adapter: DrizzleAdapter(db),
   providers: [
     Credential({
       name: "credentials",
